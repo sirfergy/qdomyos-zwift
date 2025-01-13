@@ -2565,8 +2565,10 @@ bool horizontreadmill::autoStartWhenSpeedIsGreaterThenZero() {
 
     // the horizon starts with a strange speed, since that i can auto start (maybe the best way to solve this
     // is to understand why it's starting with this strange speed)
-    if (!horizon_paragon_x && !horizon_treadmill_7_8)
+    if (!horizon_paragon_x)
         return false;
+
+    qDebug() << QStringLiteral("lastStop: ") + QString::number(lastStop);
 
     if ((lastStop == 0 || QDateTime::currentMSecsSinceEpoch() > (lastStop + 25000)) && requestStop == -1)
         return true;
